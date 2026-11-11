@@ -1,5 +1,6 @@
 using System;
 using System.Windows.Forms;
+using DualTaskTracker.Forms;
 
 namespace DualTaskTracker
 {
@@ -9,7 +10,7 @@ namespace DualTaskTracker
         static void Main()
         {
             ApplicationConfiguration.Initialize();
-            // початкова точка входу
+            Application.Run(new MainForm());
         }
     }
 }
