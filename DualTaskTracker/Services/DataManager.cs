@@ -67,9 +67,12 @@ namespace DualTaskTracker.Services
 
         public void AddTask(string title, TaskOwner owner)
         {
+            if (string.IsNullOrWhiteSpace(title))
+                return;
+
             Data.Tasks.Add(new TaskItem
             {
-                Title = title,
+                Title = title.Trim(),
                 Owner = owner,
                 IsCompleted = false,
                 Date = DateTime.Today
@@ -81,6 +84,12 @@ namespace DualTaskTracker.Services
         public void RemoveTask(Guid id)
         {
             Data.Tasks.RemoveAll(t => t.Id == id);
+            SaveData();
+        }
+
+        public void ClearCompletedTasks()
+        {
+            Data.Tasks.RemoveAll(t => t.IsCompleted);
             SaveData();
         }
 
