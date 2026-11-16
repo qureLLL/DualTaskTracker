@@ -138,5 +138,21 @@ namespace DualTaskTracker.Forms
                 RenderTasks();
             }
         }
+
+        private void btnClearCompleted_Click(object? sender, EventArgs e)
+        {
+            var completedCount = _dataManager.Data.Tasks.Count(t => t.IsCompleted);
+            if (completedCount == 0)
+            {
+                MessageBox.Show("Немає виконаних завдань для очищення.", "Інформація", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            if (MessageBox.Show($"Видалити всі виконані завдання ({completedCount} шт.)?", "Підтвердження", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                _dataManager.ClearCompletedTasks();
+                RenderTasks();
+            }
+        }
     }
 }

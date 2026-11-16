@@ -19,6 +19,7 @@ namespace DualTaskTracker.Forms
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblCurrentDate = new System.Windows.Forms.Label();
             this.btnAddTask = new System.Windows.Forms.Button();
+            this.btnClearCompleted = new System.Windows.Forms.Button();
             this.grpProgress = new System.Windows.Forms.GroupBox();
             this.lblUser1Progress = new System.Windows.Forms.Label();
             this.pbUser1 = new System.Windows.Forms.ProgressBar();
@@ -35,6 +36,7 @@ namespace DualTaskTracker.Forms
             this.SuspendLayout();
 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.pnlHeader.Controls.Add(this.btnClearCompleted);
             this.pnlHeader.Controls.Add(this.btnAddTask);
             this.pnlHeader.Controls.Add(this.lblCurrentDate);
             this.pnlHeader.Controls.Add(this.lblTitle);
@@ -76,6 +78,21 @@ namespace DualTaskTracker.Forms
             this.btnAddTask.Text = "+ Додати завдання";
             this.btnAddTask.UseVisualStyleBackColor = false;
             this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
+
+            this.btnClearCompleted.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearCompleted.BackColor = System.Drawing.Color.FromArgb(71, 85, 105);
+            this.btnClearCompleted.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnClearCompleted.FlatAppearance.BorderSize = 0;
+            this.btnClearCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClearCompleted.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.btnClearCompleted.ForeColor = System.Drawing.Color.White;
+            this.btnClearCompleted.Location = new System.Drawing.Point(455, 18);
+            this.btnClearCompleted.Name = "btnClearCompleted";
+            this.btnClearCompleted.Size = new System.Drawing.Size(180, 40);
+            this.btnClearCompleted.TabIndex = 3;
+            this.btnClearCompleted.Text = "Очистити виконані";
+            this.btnClearCompleted.UseVisualStyleBackColor = false;
+            this.btnClearCompleted.Click += new System.EventHandler(this.btnClearCompleted_Click);
 
             this.grpProgress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -191,6 +208,7 @@ namespace DualTaskTracker.Forms
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblCurrentDate;
         private System.Windows.Forms.Button btnAddTask;
+        private System.Windows.Forms.Button btnClearCompleted;
         private System.Windows.Forms.GroupBox grpProgress;
         private System.Windows.Forms.Label lblUser1Progress;
         private System.Windows.Forms.ProgressBar pbUser1;
