@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using System.Text.Encodings.Web;
 using System.Text.Json;
 using System.Text.Unicode;
@@ -91,6 +92,22 @@ namespace DualTaskTracker.Services
         {
             Data.Tasks.RemoveAll(t => t.IsCompleted);
             SaveData();
+        }
+
+        public TaskStatistics GetStatistics()
+        {
+            var stats = new TaskStatistics
+            {
+                TotalTasks = Data.Tasks.Count,
+                CompletedTasks = Data.Tasks.Count(t => t.IsCompleted),
+                User1Total = Data.Tasks.Count(t => t.Owner == TaskOwner.User1),
+                User1Completed = Data.Tasks.Count(t => t.Owner == TaskOwner.User1 && t.IsCompleted),
+                User2Total = Data.Tasks.Count(t => t.Owner == TaskOwner.User2),
+                User2Completed = Data.Tasks.Count(t => t.Owner == TaskOwner.User2 && t.IsCompleted),
+                SharedTotal = Data.Tasks.Count(t => t.Owner == TaskOwner.Shared),
+                SharedCompleted = Data.Tasks.Count(t => t.Owner == TaskOwner.Shared && t.IsCompleted)
+            };
+            return stats;
         }
 
         private void SeedInitialData()
