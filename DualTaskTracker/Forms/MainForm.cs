@@ -127,6 +127,9 @@ namespace DualTaskTracker.Forms
 
             pbUser2.Value = percent2;
             lblUser2Progress.Text = $"{_dataManager.Data.User2Name}: {percent2}% ({done2} з {total2} виконано)";
+
+            var stats = _dataManager.GetStatistics();
+            lblOverallStats.Text = $"📊 Загальний прогрес команди: {stats.CompletedTasks} з {stats.TotalTasks} ({stats.OverallPercent}%) | Спільних завдань: {stats.SharedCompleted}/{stats.SharedTotal}";
         }
 
         private void btnAddTask_Click(object? sender, EventArgs e)

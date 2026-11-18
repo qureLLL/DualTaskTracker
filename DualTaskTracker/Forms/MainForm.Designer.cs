@@ -25,6 +25,7 @@ namespace DualTaskTracker.Forms
             this.pbUser1 = new System.Windows.Forms.ProgressBar();
             this.lblUser2Progress = new System.Windows.Forms.Label();
             this.pbUser2 = new System.Windows.Forms.ProgressBar();
+            this.lblOverallStats = new System.Windows.Forms.Label();
             this.grpUser1 = new System.Windows.Forms.GroupBox();
             this.flpUser1Tasks = new System.Windows.Forms.FlowLayoutPanel();
             this.grpUser2 = new System.Windows.Forms.GroupBox();
@@ -97,6 +98,7 @@ namespace DualTaskTracker.Forms
             this.grpProgress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpProgress.BackColor = System.Drawing.Color.White;
+            this.grpProgress.Controls.Add(this.lblOverallStats);
             this.grpProgress.Controls.Add(this.lblUser1Progress);
             this.grpProgress.Controls.Add(this.pbUser1);
             this.grpProgress.Controls.Add(this.lblUser2Progress);
@@ -105,7 +107,7 @@ namespace DualTaskTracker.Forms
             this.grpProgress.ForeColor = System.Drawing.Color.FromArgb(30, 41, 59);
             this.grpProgress.Location = new System.Drawing.Point(20, 90);
             this.grpProgress.Name = "grpProgress";
-            this.grpProgress.Size = new System.Drawing.Size(820, 100);
+            this.grpProgress.Size = new System.Drawing.Size(820, 115);
             this.grpProgress.TabIndex = 1;
             this.grpProgress.TabStop = false;
             this.grpProgress.Text = "🏆 Прогрес дня (Змагання)";
@@ -136,15 +138,24 @@ namespace DualTaskTracker.Forms
             this.pbUser2.Size = new System.Drawing.Size(375, 26);
             this.pbUser2.TabIndex = 3;
 
+            this.lblOverallStats.AutoSize = true;
+            this.lblOverallStats.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Regular);
+            this.lblOverallStats.ForeColor = System.Drawing.Color.FromArgb(100, 116, 139);
+            this.lblOverallStats.Location = new System.Drawing.Point(20, 88);
+            this.lblOverallStats.Name = "lblOverallStats";
+            this.lblOverallStats.Size = new System.Drawing.Size(420, 17);
+            this.lblOverallStats.TabIndex = 4;
+            this.lblOverallStats.Text = "📊 Загальний прогрес команди: 0 з 0 (0%)";
+
             this.grpUser1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
             this.grpUser1.BackColor = System.Drawing.Color.White;
             this.grpUser1.Controls.Add(this.flpUser1Tasks);
             this.grpUser1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpUser1.ForeColor = System.Drawing.Color.FromArgb(37, 99, 235);
-            this.grpUser1.Location = new System.Drawing.Point(20, 205);
+            this.grpUser1.Location = new System.Drawing.Point(20, 218);
             this.grpUser1.Name = "grpUser1";
-            this.grpUser1.Size = new System.Drawing.Size(400, 355);
+            this.grpUser1.Size = new System.Drawing.Size(400, 342);
             this.grpUser1.TabIndex = 2;
             this.grpUser1.TabStop = false;
             this.grpUser1.Text = "👤 Олександр";
@@ -155,7 +166,7 @@ namespace DualTaskTracker.Forms
             this.flpUser1Tasks.Location = new System.Drawing.Point(3, 23);
             this.flpUser1Tasks.Name = "flpUser1Tasks";
             this.flpUser1Tasks.Padding = new System.Windows.Forms.Padding(10);
-            this.flpUser1Tasks.Size = new System.Drawing.Size(394, 329);
+            this.flpUser1Tasks.Size = new System.Drawing.Size(394, 316);
             this.flpUser1Tasks.TabIndex = 0;
             this.flpUser1Tasks.WrapContents = false;
 
@@ -165,9 +176,9 @@ namespace DualTaskTracker.Forms
             this.grpUser2.Controls.Add(this.flpUser2Tasks);
             this.grpUser2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.grpUser2.ForeColor = System.Drawing.Color.FromArgb(219, 39, 119);
-            this.grpUser2.Location = new System.Drawing.Point(440, 205);
+            this.grpUser2.Location = new System.Drawing.Point(440, 218);
             this.grpUser2.Name = "grpUser2";
-            this.grpUser2.Size = new System.Drawing.Size(400, 355);
+            this.grpUser2.Size = new System.Drawing.Size(400, 342);
             this.grpUser2.TabIndex = 3;
             this.grpUser2.TabStop = false;
             this.grpUser2.Text = "👤 Марія";
@@ -214,6 +225,7 @@ namespace DualTaskTracker.Forms
         private System.Windows.Forms.ProgressBar pbUser1;
         private System.Windows.Forms.Label lblUser2Progress;
         private System.Windows.Forms.ProgressBar pbUser2;
+        private System.Windows.Forms.Label lblOverallStats;
         private System.Windows.Forms.GroupBox grpUser1;
         private System.Windows.Forms.FlowLayoutPanel flpUser1Tasks;
         private System.Windows.Forms.GroupBox grpUser2;
