@@ -20,6 +20,7 @@ namespace DualTaskTracker.Forms
             this.lblCurrentDate = new System.Windows.Forms.Label();
             this.btnAddTask = new System.Windows.Forms.Button();
             this.btnClearCompleted = new System.Windows.Forms.Button();
+            this.btnExportReport = new System.Windows.Forms.Button();
             this.lblFilter = new System.Windows.Forms.Label();
             this.cmbTaskFilter = new System.Windows.Forms.ComboBox();
             this.grpProgress = new System.Windows.Forms.GroupBox();
@@ -39,6 +40,7 @@ namespace DualTaskTracker.Forms
             this.SuspendLayout();
 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.pnlHeader.Controls.Add(this.btnExportReport);
             this.pnlHeader.Controls.Add(this.cmbTaskFilter);
             this.pnlHeader.Controls.Add(this.lblFilter);
             this.pnlHeader.Controls.Add(this.btnClearCompleted);
@@ -98,11 +100,11 @@ namespace DualTaskTracker.Forms
             this.btnAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddTask.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnAddTask.ForeColor = System.Drawing.Color.White;
-            this.btnAddTask.Location = new System.Drawing.Point(650, 18);
+            this.btnAddTask.Location = new System.Drawing.Point(680, 18);
             this.btnAddTask.Name = "btnAddTask";
-            this.btnAddTask.Size = new System.Drawing.Size(190, 40);
+            this.btnAddTask.Size = new System.Drawing.Size(160, 40);
             this.btnAddTask.TabIndex = 2;
-            this.btnAddTask.Text = "+ Додати завдання";
+            this.btnAddTask.Text = "+ Додати";
             this.btnAddTask.UseVisualStyleBackColor = false;
             this.btnAddTask.Click += new System.EventHandler(this.btnAddTask_Click);
 
@@ -113,13 +115,28 @@ namespace DualTaskTracker.Forms
             this.btnClearCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClearCompleted.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.btnClearCompleted.ForeColor = System.Drawing.Color.White;
-            this.btnClearCompleted.Location = new System.Drawing.Point(455, 18);
+            this.btnClearCompleted.Location = new System.Drawing.Point(530, 18);
             this.btnClearCompleted.Name = "btnClearCompleted";
-            this.btnClearCompleted.Size = new System.Drawing.Size(180, 40);
+            this.btnClearCompleted.Size = new System.Drawing.Size(140, 40);
             this.btnClearCompleted.TabIndex = 3;
-            this.btnClearCompleted.Text = "Очистити виконані";
+            this.btnClearCompleted.Text = "Очистити";
             this.btnClearCompleted.UseVisualStyleBackColor = false;
             this.btnClearCompleted.Click += new System.EventHandler(this.btnClearCompleted_Click);
+
+            this.btnExportReport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExportReport.BackColor = System.Drawing.Color.FromArgb(16, 185, 129);
+            this.btnExportReport.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnExportReport.FlatAppearance.BorderSize = 0;
+            this.btnExportReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExportReport.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnExportReport.ForeColor = System.Drawing.Color.White;
+            this.btnExportReport.Location = new System.Drawing.Point(400, 18);
+            this.btnExportReport.Name = "btnExportReport";
+            this.btnExportReport.Size = new System.Drawing.Size(120, 40);
+            this.btnExportReport.TabIndex = 6;
+            this.btnExportReport.Text = "📄 Звіт";
+            this.btnExportReport.UseVisualStyleBackColor = false;
+            this.btnExportReport.Click += new System.EventHandler(this.btnExportReport_Click);
 
             this.grpProgress.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -248,6 +265,7 @@ namespace DualTaskTracker.Forms
         private System.Windows.Forms.ComboBox cmbTaskFilter;
         private System.Windows.Forms.Button btnAddTask;
         private System.Windows.Forms.Button btnClearCompleted;
+        private System.Windows.Forms.Button btnExportReport;
         private System.Windows.Forms.GroupBox grpProgress;
         private System.Windows.Forms.Label lblUser1Progress;
         private System.Windows.Forms.ProgressBar pbUser1;
