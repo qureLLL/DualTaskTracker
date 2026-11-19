@@ -171,5 +171,29 @@ namespace DualTaskTracker.Forms
                 RenderTasks();
             }
         }
+
+        private void btnExportReport_Click(object? sender, EventArgs e)
+        {
+            using var sfd = new SaveFileDialog
+            {
+                Title = "Зберегти звіт завдань",
+                Filter = "Текстовий файл (*.txt)|*.txt|Markdown документ (*.md)|*.md",
+                FileName = $"DualTaskReport_{DateTime.Today:yyyyMMdd}.txt"
+            };
+
+            if (sfd.ShowDialog(this) == DialogResult.OK)
+            {
+                try
+                {
+                    string report = _dataManager.ExportTasksToReport();
+                    File.WriteAllText(sfd.FileName, report);
+                    MessageBox.Show("Звіт успішно збережено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Помилка при збереженні звіту: {ex.Message}", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
     }
 }
