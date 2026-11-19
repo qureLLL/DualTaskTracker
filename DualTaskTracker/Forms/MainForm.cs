@@ -27,6 +27,24 @@ namespace DualTaskTracker.Forms
             lblCurrentDate.Text = $"Поточна дата: {DateTime.Today:dd.MM.yyyy}";
             grpUser1.Text = $"👤 {_dataManager.Data.User1Name}";
             grpUser2.Text = $"👤 {_dataManager.Data.User2Name}";
+            cmbTaskFilter.SelectedIndex = 0;
+        }
+
+        private TaskFilterState GetCurrentFilter()
+        {
+            if (cmbTaskFilter == null) return TaskFilterState.All;
+            return cmbTaskFilter.SelectedIndex switch
+            {
+                1 => TaskFilterState.ActiveOnly,
+                2 => TaskFilterState.CompletedOnly,
+                _ => TaskFilterState.All
+            };
+        }
+
+        private void cmbTaskFilter_SelectedIndexChanged(object? sender, EventArgs e)
+        {
+            if (_isUpdatingUi) return;
+            RenderTasks();
         }
 
         private void RenderTasks()
@@ -39,13 +57,9 @@ namespace DualTaskTracker.Forms
             flpUser1Tasks.Controls.Clear();
             flpUser2Tasks.Controls.Clear();
 
-            var user1Tasks = _dataManager.Data.Tasks
-                .Where(t => t.Owner == TaskOwner.User1 || t.Owner == TaskOwner.Shared)
-                .ToList();
-
-            var user2Tasks = _dataManager.Data.Tasks
-                .Where(t => t.Owner == TaskOwner.User2 || t.Owner == TaskOwner.Shared)
-                .ToList();
+            var filter = GetCurrentFilter();
+            var user1Tasks = _dataManager.GetFilteredTasks(TaskOwner.User1, filter).ToList();
+            var user2Tasks = _dataManager.GetFilteredTasks(TaskOwner.User2, filter).ToList();
 
             foreach (var task in user1Tasks)
             {
