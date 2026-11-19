@@ -20,6 +20,8 @@ namespace DualTaskTracker.Forms
             this.lblCurrentDate = new System.Windows.Forms.Label();
             this.btnAddTask = new System.Windows.Forms.Button();
             this.btnClearCompleted = new System.Windows.Forms.Button();
+            this.lblFilter = new System.Windows.Forms.Label();
+            this.cmbTaskFilter = new System.Windows.Forms.ComboBox();
             this.grpProgress = new System.Windows.Forms.GroupBox();
             this.lblUser1Progress = new System.Windows.Forms.Label();
             this.pbUser1 = new System.Windows.Forms.ProgressBar();
@@ -37,6 +39,8 @@ namespace DualTaskTracker.Forms
             this.SuspendLayout();
 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.pnlHeader.Controls.Add(this.cmbTaskFilter);
+            this.pnlHeader.Controls.Add(this.lblFilter);
             this.pnlHeader.Controls.Add(this.btnClearCompleted);
             this.pnlHeader.Controls.Add(this.btnAddTask);
             this.pnlHeader.Controls.Add(this.lblCurrentDate);
@@ -64,6 +68,28 @@ namespace DualTaskTracker.Forms
             this.lblCurrentDate.Size = new System.Drawing.Size(150, 19);
             this.lblCurrentDate.TabIndex = 1;
             this.lblCurrentDate.Text = "Дата: 01.01.2026";
+
+            this.lblFilter.AutoSize = true;
+            this.lblFilter.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblFilter.ForeColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.lblFilter.Location = new System.Drawing.Point(195, 44);
+            this.lblFilter.Name = "lblFilter";
+            this.lblFilter.Size = new System.Drawing.Size(53, 17);
+            this.lblFilter.TabIndex = 4;
+            this.lblFilter.Text = "Фільтр:";
+
+            this.cmbTaskFilter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbTaskFilter.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.cmbTaskFilter.FormattingEnabled = true;
+            this.cmbTaskFilter.Items.AddRange(new object[] {
+            "Всі завдання",
+            "Лише активні",
+            "Лише виконані"});
+            this.cmbTaskFilter.Location = new System.Drawing.Point(255, 41);
+            this.cmbTaskFilter.Name = "cmbTaskFilter";
+            this.cmbTaskFilter.Size = new System.Drawing.Size(160, 23);
+            this.cmbTaskFilter.TabIndex = 5;
+            this.cmbTaskFilter.SelectedIndexChanged += new System.EventHandler(this.cmbTaskFilter_SelectedIndexChanged);
 
             this.btnAddTask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddTask.BackColor = System.Drawing.Color.FromArgb(59, 130, 246);
@@ -218,6 +244,8 @@ namespace DualTaskTracker.Forms
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblCurrentDate;
+        private System.Windows.Forms.Label lblFilter;
+        private System.Windows.Forms.ComboBox cmbTaskFilter;
         private System.Windows.Forms.Button btnAddTask;
         private System.Windows.Forms.Button btnClearCompleted;
         private System.Windows.Forms.GroupBox grpProgress;
