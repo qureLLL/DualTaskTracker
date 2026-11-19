@@ -122,6 +122,27 @@ namespace DualTaskTracker.Services
             return stats;
         }
 
+        public string ExportTasksToReport()
+        {
+            var sb = new System.Text.StringBuilder();
+            sb.AppendLine($"=== ЗВІТ З ДНЯ: {DateTime.Today:dd.MM.yyyy} ===");
+            sb.AppendLine($"Користувачі: {Data.User1Name} та {Data.User2Name}");
+            sb.AppendLine(new string('-', 40));
+            var stats = GetStatistics();
+            sb.AppendLine($"Загальний прогрес: {stats.CompletedTasks} з {stats.TotalTasks} ({stats.OverallPercent}%)");
+            sb.AppendLine(new string('-', 40));
+            sb.AppendLine($"\nЗавдання [{Data.User1Name}]:");
+            foreach (var t in Data.Tasks.Where(x => x.Owner == TaskOwner.User1))
+                sb.AppendLine($" [{(t.IsCompleted ? "X" : " ")}] {t.Title}");
+            sb.AppendLine($"\nЗавдання [{Data.User2Name}]:");
+            foreach (var t in Data.Tasks.Where(x => x.Owner == TaskOwner.User2))
+                sb.AppendLine($" [{(t.IsCompleted ? "X" : " ")}] {t.Title}");
+            sb.AppendLine("\nСпільні завдання:");
+            foreach (var t in Data.Tasks.Where(x => x.Owner == TaskOwner.Shared))
+                sb.AppendLine($" [{(t.IsCompleted ? "X" : " ")}] {t.Title}");
+            return sb.ToString();
+        }
+
         private void SeedInitialData()
         {
             Data.Tasks.Add(new TaskItem { Title = "Ранкова зарядка 15 хв", Owner = TaskOwner.User1 });
