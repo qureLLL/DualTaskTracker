@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Encodings.Web;
@@ -92,6 +93,17 @@ namespace DualTaskTracker.Services
         {
             Data.Tasks.RemoveAll(t => t.IsCompleted);
             SaveData();
+        }
+
+        public IEnumerable<TaskItem> GetFilteredTasks(TaskOwner owner, TaskFilterState filter)
+        {
+            var query = Data.Tasks.Where(t => t.Owner == owner || t.Owner == TaskOwner.Shared);
+            return filter switch
+            {
+                TaskFilterState.ActiveOnly => query.Where(t => !t.IsCompleted),
+                TaskFilterState.CompletedOnly => query.Where(t => t.IsCompleted),
+                _ => query
+            };
         }
 
         public TaskStatistics GetStatistics()
