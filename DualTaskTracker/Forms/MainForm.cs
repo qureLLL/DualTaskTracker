@@ -81,9 +81,34 @@ namespace DualTaskTracker.Forms
 
         private CheckBox CreateTaskCheckBox(TaskItem task)
         {
+            string priorityPrefix = task.Priority switch
+            {
+                TaskPriority.High => "[🔥 Високий] ",
+                TaskPriority.Low => "[💤 Низький] ",
+                _ => ""
+            };
+
             string displayTitle = task.Owner == TaskOwner.Shared
-                ? $"[Спільне] {task.Title}"
-                : task.Title;
+                ? $"[Спільне] {priorityPrefix}{task.Title}"
+                : $"{priorityPrefix}{task.Title}";
+
+            Color taskColor;
+            if (task.IsCompleted)
+            {
+                taskColor = Color.Gray;
+            }
+            else if (task.Priority == TaskPriority.High)
+            {
+                taskColor = Color.FromArgb(185, 28, 28);
+            }
+            else if (task.Owner == TaskOwner.Shared)
+            {
+                taskColor = Color.FromArgb(109, 40, 217);
+            }
+            else
+            {
+                taskColor = Color.FromArgb(30, 41, 59);
+            }
 
             var cb = new CheckBox
             {
@@ -93,9 +118,7 @@ namespace DualTaskTracker.Forms
                 AutoSize = true,
                 MaximumSize = new Size(350, 0),
                 Font = new Font("Segoe UI", 10.5F, task.IsCompleted ? FontStyle.Strikeout : FontStyle.Regular),
-                ForeColor = task.IsCompleted
-                    ? Color.Gray
-                    : (task.Owner == TaskOwner.Shared ? Color.FromArgb(109, 40, 217) : Color.FromArgb(30, 41, 59)),
+                ForeColor = taskColor,
                 Margin = new Padding(4, 6, 4, 6),
                 Cursor = Cursors.Hand
             };
@@ -151,7 +174,7 @@ namespace DualTaskTracker.Forms
             using var addForm = new AddTaskForm(_dataManager.Data.User1Name, _dataManager.Data.User2Name);
             if (addForm.ShowDialog(this) == DialogResult.OK)
             {
-                _dataManager.AddTask(addForm.TaskTitle, addForm.SelectedOwner);
+                _dataManager.AddTask(addForm.TaskTitle, addForm.SelectedOwner, addForm.SelectedPriority);
                 RenderTasks();
             }
         }

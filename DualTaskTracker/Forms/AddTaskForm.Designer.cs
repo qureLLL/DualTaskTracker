@@ -19,6 +19,8 @@ namespace DualTaskTracker.Forms
             this.txtTaskTitle = new System.Windows.Forms.TextBox();
             this.lblOwnerPrompt = new System.Windows.Forms.Label();
             this.cmbOwner = new System.Windows.Forms.ComboBox();
+            this.lblPriorityPrompt = new System.Windows.Forms.Label();
+            this.cmbPriority = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -53,12 +55,28 @@ namespace DualTaskTracker.Forms
             this.cmbOwner.Size = new System.Drawing.Size(360, 27);
             this.cmbOwner.TabIndex = 3;
 
+            this.lblPriorityPrompt.AutoSize = true;
+            this.lblPriorityPrompt.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.lblPriorityPrompt.Location = new System.Drawing.Point(20, 155);
+            this.lblPriorityPrompt.Name = "lblPriorityPrompt";
+            this.lblPriorityPrompt.Size = new System.Drawing.Size(155, 19);
+            this.lblPriorityPrompt.TabIndex = 6;
+            this.lblPriorityPrompt.Text = "Пріоритет завдання:";
+
+            this.cmbPriority.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPriority.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            this.cmbPriority.FormattingEnabled = true;
+            this.cmbPriority.Location = new System.Drawing.Point(20, 180);
+            this.cmbPriority.Name = "cmbPriority";
+            this.cmbPriority.Size = new System.Drawing.Size(360, 27);
+            this.cmbPriority.TabIndex = 7;
+
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(46, 125, 50);
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(195, 165);
+            this.btnSave.Location = new System.Drawing.Point(195, 230);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(185, 38);
             this.btnSave.TabIndex = 4;
@@ -69,7 +87,7 @@ namespace DualTaskTracker.Forms
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.btnCancel.Location = new System.Drawing.Point(20, 165);
+            this.btnCancel.Location = new System.Drawing.Point(20, 230);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(160, 38);
             this.btnCancel.TabIndex = 5;
@@ -81,7 +99,9 @@ namespace DualTaskTracker.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(400, 225);
+            this.ClientSize = new System.Drawing.Size(400, 290);
+            this.Controls.Add(this.cmbPriority);
+            this.Controls.Add(this.lblPriorityPrompt);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.cmbOwner);
@@ -102,6 +122,8 @@ namespace DualTaskTracker.Forms
         private System.Windows.Forms.TextBox txtTaskTitle;
         private System.Windows.Forms.Label lblOwnerPrompt;
         private System.Windows.Forms.ComboBox cmbOwner;
+        private System.Windows.Forms.Label lblPriorityPrompt;
+        private System.Windows.Forms.ComboBox cmbPriority;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;
     }
