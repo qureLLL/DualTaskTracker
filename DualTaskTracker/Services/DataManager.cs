@@ -67,7 +67,7 @@ namespace DualTaskTracker.Services
             }
         }
 
-        public void AddTask(string title, TaskOwner owner)
+        public void AddTask(string title, TaskOwner owner, TaskPriority priority = TaskPriority.Normal)
         {
             if (string.IsNullOrWhiteSpace(title))
                 return;
@@ -76,6 +76,7 @@ namespace DualTaskTracker.Services
             {
                 Title = title.Trim(),
                 Owner = owner,
+                Priority = priority,
                 IsCompleted = false,
                 Date = DateTime.Today
             });
