@@ -47,6 +47,12 @@ namespace DualTaskTracker.Forms
             RenderTasks();
         }
 
+        private void txtSearch_TextChanged(object? sender, EventArgs e)
+        {
+            if (_isUpdatingUi) return;
+            RenderTasks();
+        }
+
         private void RenderTasks()
         {
             _isUpdatingUi = true;
@@ -58,8 +64,9 @@ namespace DualTaskTracker.Forms
             flpUser2Tasks.Controls.Clear();
 
             var filter = GetCurrentFilter();
-            var user1Tasks = _dataManager.GetFilteredTasks(TaskOwner.User1, filter).ToList();
-            var user2Tasks = _dataManager.GetFilteredTasks(TaskOwner.User2, filter).ToList();
+            string query = txtSearch?.Text ?? string.Empty;
+            var user1Tasks = _dataManager.SearchTasks(query, TaskOwner.User1, filter).ToList();
+            var user2Tasks = _dataManager.SearchTasks(query, TaskOwner.User2, filter).ToList();
 
             foreach (var task in user1Tasks)
             {

@@ -21,6 +21,8 @@ namespace DualTaskTracker.Forms
             this.btnAddTask = new System.Windows.Forms.Button();
             this.btnClearCompleted = new System.Windows.Forms.Button();
             this.btnExportReport = new System.Windows.Forms.Button();
+            this.lblSearch = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             this.lblFilter = new System.Windows.Forms.Label();
             this.cmbTaskFilter = new System.Windows.Forms.ComboBox();
             this.grpProgress = new System.Windows.Forms.GroupBox();
@@ -40,6 +42,8 @@ namespace DualTaskTracker.Forms
             this.SuspendLayout();
 
             this.pnlHeader.BackColor = System.Drawing.Color.FromArgb(30, 41, 59);
+            this.pnlHeader.Controls.Add(this.txtSearch);
+            this.pnlHeader.Controls.Add(this.lblSearch);
             this.pnlHeader.Controls.Add(this.btnExportReport);
             this.pnlHeader.Controls.Add(this.cmbTaskFilter);
             this.pnlHeader.Controls.Add(this.lblFilter);
@@ -74,7 +78,7 @@ namespace DualTaskTracker.Forms
             this.lblFilter.AutoSize = true;
             this.lblFilter.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblFilter.ForeColor = System.Drawing.Color.FromArgb(203, 213, 225);
-            this.lblFilter.Location = new System.Drawing.Point(195, 44);
+            this.lblFilter.Location = new System.Drawing.Point(175, 44);
             this.lblFilter.Name = "lblFilter";
             this.lblFilter.Size = new System.Drawing.Size(53, 17);
             this.lblFilter.TabIndex = 4;
@@ -84,25 +88,41 @@ namespace DualTaskTracker.Forms
             this.cmbTaskFilter.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmbTaskFilter.FormattingEnabled = true;
             this.cmbTaskFilter.Items.AddRange(new object[] {
-            "Всі завдання",
-            "Лише активні",
-            "Лише виконані"});
-            this.cmbTaskFilter.Location = new System.Drawing.Point(255, 41);
+            "Всі",
+            "Активні",
+            "Виконані"});
+            this.cmbTaskFilter.Location = new System.Drawing.Point(230, 41);
             this.cmbTaskFilter.Name = "cmbTaskFilter";
-            this.cmbTaskFilter.Size = new System.Drawing.Size(160, 23);
+            this.cmbTaskFilter.Size = new System.Drawing.Size(100, 23);
             this.cmbTaskFilter.TabIndex = 5;
             this.cmbTaskFilter.SelectedIndexChanged += new System.EventHandler(this.cmbTaskFilter_SelectedIndexChanged);
+
+            this.lblSearch.AutoSize = true;
+            this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(203, 213, 225);
+            this.lblSearch.Location = new System.Drawing.Point(340, 44);
+            this.lblSearch.Name = "lblSearch";
+            this.lblSearch.Size = new System.Drawing.Size(64, 17);
+            this.lblSearch.TabIndex = 7;
+            this.lblSearch.Text = "🔍 Пошук:";
+
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.txtSearch.Location = new System.Drawing.Point(408, 41);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(140, 23);
+            this.txtSearch.TabIndex = 8;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
 
             this.btnAddTask.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddTask.BackColor = System.Drawing.Color.FromArgb(59, 130, 246);
             this.btnAddTask.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddTask.FlatAppearance.BorderSize = 0;
             this.btnAddTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddTask.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnAddTask.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnAddTask.ForeColor = System.Drawing.Color.White;
-            this.btnAddTask.Location = new System.Drawing.Point(680, 18);
+            this.btnAddTask.Location = new System.Drawing.Point(745, 18);
             this.btnAddTask.Name = "btnAddTask";
-            this.btnAddTask.Size = new System.Drawing.Size(160, 40);
+            this.btnAddTask.Size = new System.Drawing.Size(100, 40);
             this.btnAddTask.TabIndex = 2;
             this.btnAddTask.Text = "+ Додати";
             this.btnAddTask.UseVisualStyleBackColor = false;
@@ -113,11 +133,11 @@ namespace DualTaskTracker.Forms
             this.btnClearCompleted.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnClearCompleted.FlatAppearance.BorderSize = 0;
             this.btnClearCompleted.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnClearCompleted.Font = new System.Drawing.Font("Segoe UI", 9.5F);
+            this.btnClearCompleted.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnClearCompleted.ForeColor = System.Drawing.Color.White;
-            this.btnClearCompleted.Location = new System.Drawing.Point(530, 18);
+            this.btnClearCompleted.Location = new System.Drawing.Point(650, 18);
             this.btnClearCompleted.Name = "btnClearCompleted";
-            this.btnClearCompleted.Size = new System.Drawing.Size(140, 40);
+            this.btnClearCompleted.Size = new System.Drawing.Size(90, 40);
             this.btnClearCompleted.TabIndex = 3;
             this.btnClearCompleted.Text = "Очистити";
             this.btnClearCompleted.UseVisualStyleBackColor = false;
@@ -128,11 +148,11 @@ namespace DualTaskTracker.Forms
             this.btnExportReport.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExportReport.FlatAppearance.BorderSize = 0;
             this.btnExportReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExportReport.Font = new System.Drawing.Font("Segoe UI", 9.5F, System.Drawing.FontStyle.Bold);
+            this.btnExportReport.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnExportReport.ForeColor = System.Drawing.Color.White;
-            this.btnExportReport.Location = new System.Drawing.Point(400, 18);
+            this.btnExportReport.Location = new System.Drawing.Point(565, 18);
             this.btnExportReport.Name = "btnExportReport";
-            this.btnExportReport.Size = new System.Drawing.Size(120, 40);
+            this.btnExportReport.Size = new System.Drawing.Size(80, 40);
             this.btnExportReport.TabIndex = 6;
             this.btnExportReport.Text = "📄 Звіт";
             this.btnExportReport.UseVisualStyleBackColor = false;
@@ -263,6 +283,8 @@ namespace DualTaskTracker.Forms
         private System.Windows.Forms.Label lblCurrentDate;
         private System.Windows.Forms.Label lblFilter;
         private System.Windows.Forms.ComboBox cmbTaskFilter;
+        private System.Windows.Forms.Label lblSearch;
+        private System.Windows.Forms.TextBox txtSearch;
         private System.Windows.Forms.Button btnAddTask;
         private System.Windows.Forms.Button btnClearCompleted;
         private System.Windows.Forms.Button btnExportReport;
