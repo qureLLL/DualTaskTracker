@@ -107,6 +107,15 @@ namespace DualTaskTracker.Services
             };
         }
 
+        public IEnumerable<TaskItem> SearchTasks(string query, TaskOwner owner, TaskFilterState filter)
+        {
+            var baseTasks = GetFilteredTasks(owner, filter);
+            if (string.IsNullOrWhiteSpace(query))
+                return baseTasks;
+            string cleanQuery = query.Trim();
+            return baseTasks.Where(t => t.Title.Contains(cleanQuery, System.StringComparison.OrdinalIgnoreCase));
+        }
+
         public TaskStatistics GetStatistics()
         {
             var stats = new TaskStatistics
